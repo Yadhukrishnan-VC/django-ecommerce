@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+/data/*
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# Log files
+django/logs/*.log
+django/logs/*.log.*

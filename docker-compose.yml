@@ -1,0 +1,55 @@
+version: '3.3'
+services:
+  db:
+    image: postgres
+    container_name: ecommerce_postgres
+    volumes: 
+    
+      - ./data/db:/var/lib/postgresql/data 
+    environment:
+      - POSTGRES_DB=django_ecommerce
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  web:
+    restart: always
+    image: ecommerce-django
+    container_name: ecommerce_django
+    build: 
+      context: ./django
+      dockerfile: Dockerfile
+    volumes:
+      - ./django:/app
+    ports:
+      - "8003:8003"
+    environment:
+      - POSTGRES_NAME=ecommerce
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db
+    env_file:
+      - ./env/.env
+  adminer:
+    image: adminer
+    restart: always
+    container_name: ecommerce_adminer
+    depends_on:
+      - db
+    ports:
+      - "8083:8080"
+    environment:
+      - ADMINER_DESIGN=dracula
+  # frontend:
+  #   image: ecommerce-react
+  #   restart: always
+  #   container_name: ecommerce_react
+  #   build:
+  #     context: ./react
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./react/frontend:/app
+  #   ports:
+  #     - "3000:3000"

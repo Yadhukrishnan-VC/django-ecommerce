@@ -1,0 +1,10 @@
+Django>=3.0,<4.0
+psycopg2-binary==2.9.1
+django-environ
+gunicorn
+django-debug-toolbar
+djangorestframework
+djangorestframework-simplejwt
+django-widget-tweaks==1.4.12
+Pillow
+django-jazzmin==2.6.0
