@@ -20,6 +20,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django import get_version
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView,TokenVerifyView
 
 urlpatterns = [
@@ -38,7 +39,7 @@ if settings.DEBUG:
     # Media url
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    urlpatterns += staticfiles_urlpatterns()
     # Debug toolbar
     if settings.ENABLE_DEBUG_TOOLBAR:
         urlpatterns += [

@@ -7,10 +7,16 @@
       <a class="navbar-brand" href="{% url 'store:home' %}">Hidden brand</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'store:home' %}">Home</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'store:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'store:collections' %}">Collections</a>
+          <a class="nav-link {% if request.resolver_match.url_name == 'collections' %}active{% endif %}" href="{% url 'store:collections' %}">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'cartview' %}active{% endif %}" aria-current="page" href="{% url 'store:cartview' %}">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" aria-current="page" href="{% url 'store:wishlist' %}">Wishlist</a>
         </li>
         {% if request.user.is_authenticated %}
           <li class="nav-item dropdown">
