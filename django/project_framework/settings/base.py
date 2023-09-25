@@ -246,3 +246,10 @@ AUTH_USER_MODEL = 'accounts.UserTable'
 #     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
 #     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 # }
+
+""" Debugger add """
+if DEBUG:
+    try:
+        from .development import *
+    except ImportError:
+        pass

@@ -32,6 +32,9 @@ services:
       - db
     env_file:
       - ./env/.env
+    # Debugger add
+    stdin_open: true
+    tty: true
   adminer:
     image: adminer
     restart: always

@@ -19,7 +19,7 @@ def Collectionsview(request,slug):
         return render(request,"products/index.html",context)
     else:
         messages.warning(request,"No such category found")
-        return redirect('collections')
+        return redirect('store:collections')
     
 def Productview(request,cat_slug,prod_slug):
     if (Category.objects.filter(slug=cat_slug,status=0)):
@@ -28,9 +28,9 @@ def Productview(request,cat_slug,prod_slug):
             context={'products':products}
         else:
             messages.error(request, "No such Product found")
-            return redirect('collections')
+            return redirect('store:collections')
     else:
         messages.error(request, "No such category found")
-        return redirect('collections')
+        return redirect('store:collections')
     
     return render(request,"products/view.html" ,context)

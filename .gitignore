@@ -9,3 +9,5 @@ celerybeat.pid
 # Log files
 django/logs/*.log
 django/logs/*.log.*
+
+/static
