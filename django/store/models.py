@@ -96,3 +96,16 @@ class OrderItem(models.Model):
     
     def __str__(self):
         return '{} - {}'.format(self.order.id,self.order.tracking_no)
+class BillingAddress(models.Model):
+    user = models.ForeignKey(UserTable, on_delete=models.CASCADE)
+    phone = models.CharField(max_length=50,null=False)
+    address=models.TextField(max_length=500,null=False,blank=False)
+    city=models.CharField(max_length=150,null=False,blank=False)
+    state=models.CharField(max_length=150,null=False,blank=False)
+    country=models.CharField(max_length=150,null=False,blank=False)
+    pincode=models.CharField(max_length=150,null=False,blank=False)
+    created_at=models.DateTimeField(auto_now_add=True)
+    
+    
+    def __str__(self):
+        return self.user.username

@@ -29,7 +29,7 @@ def Addtocart(request):
             return JsonResponse({'status':'Login to continue'})
     return redirect('/')
 
-@login_required(login_url='loginview')
+@login_required(login_url='accounts:loginview')
 def CartView(request):
     cart = Cart.objects.filter(user = request.user)
     context = {'cart':cart}

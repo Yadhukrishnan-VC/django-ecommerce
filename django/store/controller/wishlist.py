@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from store.models import Product,Cart,Wishlist
 from accounts.forms import UserForm
 
-@login_required(login_url='loginview')
+@login_required(login_url='accounts:loginview')
 def index(request):
     wishlist = Wishlist.objects.filter(user=request.user)
     context = {'wishlist':wishlist}
